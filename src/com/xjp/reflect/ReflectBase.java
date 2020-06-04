@@ -1,5 +1,6 @@
 package com.xjp.reflect;
 
+import com.xjp.com.xjp.bean.Person;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -102,29 +103,3 @@ public class ReflectBase {
         System.out.println(clazz);
     }
 }
-
-class Person {
-    public String name;
-    private int age;
-
-    public void info(String info) {
-        System.out.println(info);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-}
-
