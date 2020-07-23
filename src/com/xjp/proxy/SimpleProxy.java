@@ -1,11 +1,11 @@
 package com.xjp.proxy;
 
+import java.lang.reflect.Proxy;
+
 /**
  * com.xjp.proxy.SimpleProxy
  * <p>
- * 简单的代理实现--通过构造器--属于静态的
- *
- * 也是接口的一种应用
+ * 简单的代理实现--通过构造器--属于静态的，接口的一种应用
  *
  * @author xujiangpeng
  * @date 2018/7/6
@@ -28,6 +28,7 @@ interface Function {
    void doRun();
    void doSleep();
 }
+
 
 
 /**

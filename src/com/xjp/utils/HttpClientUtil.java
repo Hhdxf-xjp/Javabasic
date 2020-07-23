@@ -1,7 +1,6 @@
 package com.xjp.utils;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -12,8 +11,6 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
@@ -25,7 +22,6 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
 import javax.net.ssl.SSLContext;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -33,7 +29,6 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -61,8 +56,8 @@ public class HttpClientUtil {
      *
      * Description: <br>
      *  处理post请求
-     * @param url
-     * @param param
+     * @param
+     * @param
      * @return
      * @see
      */
@@ -251,7 +246,7 @@ public class HttpClientUtil {
      * Description: <br>
      *  处理get请求
      * @param url
-     * @param param
+     * @param
      * @return
      * @see
      */
@@ -311,40 +306,40 @@ public class HttpClientUtil {
         return resultString;
     }
 
-    public static String uploadFile(File file, String remoteUrl) {
-        String result = "";
-        try {
-            //String fileName = file.getOriginalFilename();
-            //String fileName = file.getName();
-            HttpPost httpPost = new HttpPost(remoteUrl);
-            /*MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-            builder.addBinaryBody("file", new FileInputStream(file), ContentType.MULTIPART_FORM_DATA, file.getName());// 文件流
-            builder.addTextBody("filename", file.getName());// 类似浏览器表单提交，对应input的name和value
-            HttpEntity entity = builder.build();
-            httpPost.setEntity(entity);*/
-
-            FileBody bin = new FileBody(file);
-            // 相当于<input type="file" name="file"/>
-            HttpEntity reqEntity = MultipartEntityBuilder.create().addPart("media", bin).build();
-
-            httpPost.setEntity(reqEntity);
-
-            try(CloseableHttpClient httpClient = HttpClients.createDefault();
-                CloseableHttpResponse response = httpClient.execute(httpPost); ){
-                HttpEntity responseEntity = response.getEntity();
-                if (responseEntity != null) {
-                    // 将响应内容转换为字符串
-                    result = EntityUtils.toString(responseEntity, Charset.forName(StandardCharsets.UTF_8.toString()));
-                }
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
+//    public static String uploadFile(File file, String remoteUrl) {
+//        String result = "";
+//        try {
+//            //String fileName = file.getOriginalFilename();
+//            //String fileName = file.getName();
+//            HttpPost httpPost = new HttpPost(remoteUrl);
+//            /*MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+//            builder.addBinaryBody("file", new FileInputStream(file), ContentType.MULTIPART_FORM_DATA, file.getName());// 文件流
+//            builder.addTextBody("filename", file.getName());// 类似浏览器表单提交，对应input的name和value
+//            HttpEntity entity = builder.build();
+//            httpPost.setEntity(entity);*/
+//
+//            FileBody bin = new FileBody(file);
+//            // 相当于<input type="file" name="file"/>
+//            HttpEntity reqEntity = MultipartEntityBuilder.create().addPart("media", bin).build();
+//
+//            httpPost.setEntity(reqEntity);
+//
+//            try(CloseableHttpClient httpClient = HttpClients.createDefault();
+//                CloseableHttpResponse response = httpClient.execute(httpPost); ){
+//                HttpEntity responseEntity = response.getEntity();
+//                if (responseEntity != null) {
+//                    // 将响应内容转换为字符串
+//                    result = EntityUtils.toString(responseEntity, Charset.forName(StandardCharsets.UTF_8.toString()));
+//                }
+//            }
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return result;
+//    }
     /**
      * ssl访问HttpClient
      * @param rqTimeout

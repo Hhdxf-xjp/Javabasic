@@ -1,4 +1,4 @@
-package com.xjp.aspic;
+package com.xjp.aspectj;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -6,6 +6,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,6 +21,7 @@ import java.util.Arrays;
  */
 @Aspect
 @Component
+@ComponentScan
 public class testaj {
 
     // private static final Logger logger =
