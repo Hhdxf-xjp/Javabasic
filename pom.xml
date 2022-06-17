@@ -61,7 +61,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.33</version>
+			<version>1.2.83</version>
 		</dependency>
 
 		<!-- docker-java引用的jackson版本为3.0.3，springboot引用的jackson版本为2.6.3 ，使用时候有冲突，下面处理为统一版本为2.6.3 -->
